@@ -1,0 +1,9 @@
+xset -b
+nitrogen --restore && \
+hsetroot -solid "#f03c61"
+tint2 &
+(sleep 3s && gnome-keyring) &
+(sleep 3s && nm-applet) &
+(sleep 3s && stjerm -k F12 -fn Terminus 9 -bg 234 -w 80% -h 50%) &
+(sleep 3s && pnmixer) &
+(sleep 3s && conky) &

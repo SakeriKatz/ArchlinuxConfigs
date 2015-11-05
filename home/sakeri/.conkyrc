@@ -1,0 +1,91 @@
+# Conky settings #
+background no
+update_interval 1
+
+cpu_avg_samples 2
+net_avg_samples 2
+
+override_utf8_locale yes
+
+double_buffer yes
+no_buffers yes
+
+text_buffer_size 2048
+#imlib_cache_size 0
+
+temperature_unit celcius
+
+# Window specifications #
+
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorate,sticky,skip_taskbar,skip_pager,below
+
+border_inner_margin 0
+border_outer_margin 0
+
+minimum_size 250 250
+maximum_width 250
+
+alignment mr
+gap_x 20
+gap_y -75
+
+# Graphics settings #
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+
+# Text settings #
+use_xft yes
+override_utf8_locale yes
+xftfont Octagonal:size=13
+xftalpha 1
+uppercase yes
+
+temperature_unit celsius
+
+default_color ffb1d6
+
+# Lua Load  #
+lua_load ~/.scripts/lua/clock_rings.lua
+lua_draw_hook_pre clock_rings
+
+TEXT
+${font Octagonal:size=13}${color 2a212e}${hr}
+${font Octagonal:bold:size=50}${time %H}${color ffb1d6}${time %M}
+${voffset -87}${font Octagonal:bold:size=16}${color 2a212e}${alignr}FOLKESTONE${font}
+${font Octagonal:bold:size=16}${color ffb1d6}${alignr}TEMP ${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ EGMH temperature temperature 30}C${font}
+${voffset 20}${font Octagonal:bold:size=16}${color 2a212e}${alignc}${time %a} ${time %d} ${color ffb1d6}${time %b} ${time %Y}${font}
+${voffset -2}${hr}
+${color 2a212e}${font Octagonal:bold:size=13}UPTIME${goto 100}${font Octagonal:size=13}${color ffb1d6}${uptime_short}
+${color 2a212e}${font Octagonal:bold:size=13}PROCESSES${goto 100}${font Octagonal:size=13}${color ffb1d6}${processes}
+${color 2a212e}${font Octagonal:bold:size=13}RUNNING${goto 100}${font Octagonal:size=13}${color ffb1d6}${running_processes}
+
+${color 2a212e}${goto 93}${voffset 40}${font Octagonal:bold:size=13}CPU0
+${color ffb1d6}${goto 93}${font Octagonal:size=13}${cpu cpu0}%
+${color 2a212e}${goto 175}${voffset -30}${font Octagonal:bold:size=13}CPU1
+${color ffb1d6}${goto 175}${font Octagonal:size=13}${cpu cpu1}%
+${color 2a212e}${goto 93}${voffset 50}${font Octagonal:bold:size=13}CPU2
+${color ffb1d6}${goto 93}${font Octagonal:size=13}${cpu cpu2}%
+${color 2a212e}${goto 175}${voffset -30}${font Octagonal:bold:size=13}CPU3
+${color ffb1d6}${goto 175}${font Octagonal:size=13}${cpu cpu3}%
+${color 2a212e}${goto 175}${voffset 50}${font Octagonal:bold:size=13}RAM
+${color ffb1d6}${goto 175}${font Octagonal:size=13}${memperc}%
+${color 2a212e}${goto 93}${voffset 50}${font Octagonal:bold:size=13}SSD
+${color ffb1d6}${goto 93}${font Octagonal:size=13}${fs_used_perc /}%
+${color 2a212e}${goto 175}${voffset -30}${font Octagonal:bold:size=13}HDD
+${color ffb1d6}${goto 175}${font Octagonal:size=13}${fs_used_perc /hdd}%
+${color 2a212e}${goto 97}${voffset 50}${font Octagonal:bold:size=13}ETH
+${color ffb1d6}${goto 97}${font Octagonal:size=13}${downspeed enp9ss0}
+${color ffb1d6}${goto 97}${upspeed enp9s0}
+${color 2a212e}${goto 178}${voffset -45}${font Octagonal:bold:size=13}WIFI
+${color ffb1d6}${goto 178}${font Octagonal:size=13}${downspeed wlp3s0}
+${color ffb1d6}${goto 178}${upspeed wlp3s0}
+
+${color 2a212e}${font Octagonal:bold:size=13}HOSTNAME ${alignr}${font Octagonal:size=13}${color ffb1d6}${nodename}
+${color 2a212e}${font Octagonal:bold:size=13}ARCH ${alignr}${font Octagonal:size=13}${color ffb1d6}${pre_exec cat /etc/issue.net}  $machine
+${color 2a212e}${font Octagonal:bold:size=13}KERNEL ${alignr}${font Octagonal:size=13}${color ffb1d6}${kernel}
+${hr}
